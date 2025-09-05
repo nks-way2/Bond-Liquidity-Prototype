@@ -1,12 +1,22 @@
 
-# Frontend (Vanilla JS)
+# Backend (FastAPI)
 
-No build step needed. Open `index.html` with a local server (so that CORS/ESM behave). Easiest:
-
+## Setup
 ```bash
-cd frontend
-python -m http.server 5173
-# then visit http://localhost:5173
+cd backend
+python -m venv .venv && source .venv/bin/activate  # Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+uvicorn app:app --reload --port 8000
 ```
-
-Make sure the backend is running at `http://localhost:8000`.
+Seed demo data:
+```bash
+curl -X POST http://localhost:8000/seed
+```
+Endpoints:
+- `GET /bonds`
+- `POST /bonds`
+- `GET /orderbook/{isin}`
+- `POST /orders` (body: `{"isin":"INE123A01011","side":"buy","price":995,"qty":10}`)
+- `GET /trades/{isin}`
+- `GET /quotes/{isin}`
+- WebSocket: `ws://localhost:8000/ws` (broadcasts order updates)
