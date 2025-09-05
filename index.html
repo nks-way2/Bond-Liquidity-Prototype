@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bond Liquidity Prototype</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Bond Liquidity Prototype</h1>
+    <div id="status">Backend: <span id="backend-status">checking...</span></div>
+    <div class="grid">
+      <div class="card">
+        <h2>Bonds</h2>
+        <button id="seed">Seed Demo Bonds</button>
+        <ul id="bond-list"></ul>
+      </div>
+      <div class="card">
+        <h2>Place Order</h2>
+        <form id="order-form">
+          <label>ISIN <input id="isin" required></label>
+          <label>Side 
+            <select id="side">
+              <option>buy</option>
+              <option>sell</option>
+            </select>
+          </label>
+          <label>Price <input id="price" type="number" step="0.01" required></label>
+          <label>Qty <input id="qty" type="number" step="0.01" required></label>
+          <button type="submit">Submit</button>
+        </form>
+        <div id="result"></div>
+      </div>
+      <div class="card">
+        <h2>Order Book</h2>
+        <label>ISIN <input id="book-isin"></label>
+        <button id="load-book">Load</button>
+        <div class="book">
+          <div><h3>Bids</h3><ul id="bids"></ul></div>
+          <div><h3>Asks</h3><ul id="asks"></ul></div>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Recent Trades</h2>
+        <label>ISIN <input id="trades-isin"></label>
+        <button id="load-trades">Load</button>
+        <ul id="trades"></ul>
+      </div>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
